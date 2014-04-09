@@ -190,75 +190,60 @@ public class MainActivity extends Activity {
 			}
 
 			Intent intent;
-			if (matches.get(0).startsWith("yel") || matches.contains("yellow")) {
+			if (in_array(yellow_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=FFFF00"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("bl")
-					|| matches.contains("blue")) {
+			} else if (in_array(blue_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=1900FF"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("gree")
-					|| matches.contains("green")) {
+			} else if (in_array(green_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=00FF2A"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("grey")
-					|| matches.get(0).startsWith("gray")
-					|| matches.contains("grey") || matches.contains("gray")) {
+			} else if (in_array(gray_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=454545"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("pin")
-					|| matches.contains("pink")) {
+			} else if (in_array(pink_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=FF00FF"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("oran")
-					|| matches.contains("orange")) {
+			} else if (in_array(orange_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=FF8800"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("whi")
-					|| matches.contains("white")) {
+			} else if (in_array(white_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=FFFFFF"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("red")
-					|| matches.contains("red")) {
+			} else if (in_array(red_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=FF0000"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("pur")
-					|| matches.contains("purple")) {
+			} else if (in_array(purple_words, matches)) {
 				intent = new Intent(
 						"com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/setMatrixColor?color=8400DB"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("shut")
-					|| matches.get(0).startsWith("sat")
-					|| matches.contains("shut down")
-					|| matches.contains("shutdown")) {
+			} else if (in_array(shutdown_words, matches)) {
 				intent = new Intent("com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/shutDown"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("clea")
-					|| matches.contains("clear")) {
+			} else if (in_array(clear_words, matches)) {
 				intent = new Intent("com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/clear"));
 				this.startActivity(intent);
-			} else if (matches.get(0).startsWith("clos")
-					|| matches.contains("close bluetooth")
-					|| matches.contains("close")) {
+			} else if (in_array(closebt_words, matches)) {
 				intent = new Intent("com.l8smartlight.action.connect",
 						Uri.parse("l8://l8smartlight.com/closeBtConnection"));
 				this.startActivity(intent);
@@ -270,5 +255,21 @@ public class MainActivity extends Activity {
 			}
 		}
 
+	}
+
+	/**
+	 * Check if one of the strings inside an ArrayList belongs to another
+	 * ArrayList
+	 */
+	public static boolean in_array(ArrayList<String> haystack,
+			ArrayList<String> needles) {
+		for (int i = 0; i < haystack.size(); i++) {
+			for (int j = 0; j < haystack.size(); j++) {
+				if (haystack.get(i).toString().startsWith(needles.get(0))) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }
