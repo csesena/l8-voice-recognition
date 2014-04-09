@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
 		closebt_words = new ArrayList<String>();
 
 		// If language is Spanish
-		if (Locale.getDefault().getDisplayLanguage().compareTo("Spanish") == 0) {
+		if (Locale.getDefault().getDisplayLanguage().startsWith("esp")) {
 			// Yellow
 			yellow_words.add("ama");
 
@@ -185,9 +185,6 @@ public class MainActivity extends Activity {
 			// engine thought it heard
 			ArrayList<String> matches = data
 					.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-			for (int i = 0; i < matches.size(); i++) {
-				System.out.println(matches.get(i));
-			}
 
 			Intent intent;
 			if (in_array(yellow_words, matches)) {
@@ -264,8 +261,9 @@ public class MainActivity extends Activity {
 	public static boolean in_array(ArrayList<String> haystack,
 			ArrayList<String> needles) {
 		for (int i = 0; i < haystack.size(); i++) {
-			for (int j = 0; j < haystack.size(); j++) {
-				if (haystack.get(i).toString().startsWith(needles.get(0))) {
+			for (int j = 0; j < needles.size(); j++) {
+				//System.out.println(needles.get(j) + " - " + haystack.get(i));
+				if (needles.get(j).toString().startsWith(haystack.get(i))) {
 					return true;
 				}
 			}
