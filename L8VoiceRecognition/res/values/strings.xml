@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">L8 Voice Recognition</string>
+    <string name="action_settings">Settings</string>
+    <string name="recog_not_present">Recognizer not present</string>
+    <string name="l8_voice_recognition">L8 voice recognition&#8230;</string>
+
+</resources>
